@@ -82,15 +82,41 @@ public partial class Account_Manage : System.Web.UI.Page
 
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Label7.Visible = true;
-        Label8.Visible = true;
-        Label9.Visible = true;
-        Label10.Visible = true;
+
     }
 
     protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
     {
         DropDownList1.Visible = true;
+        DropDownList5.Visible = true;
+        DropDownList6.Visible = true;
         Label1.Visible = true;
+        Label7.Visible = true;
+        Label8.Visible = true;
+        Label9.Visible = true;
+        Label10.Visible = true;
+        TextBox1.Visible = true;
+        TextBox2.Visible = true;
+        Button1.Visible = true;
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        if (TextBox1.Text == "")
+        {
+            Label11.Visible = true;
+        }
+        if (TextBox1.Text != "")
+        {
+            Label11.Visible = false;
+        }
+        if (TextBox2.Text == "")
+        {
+            Label12.Visible = true;
+        }
+        if (TextBox2.Text != "")
+        {
+            Label12.Visible = false;
+        }
     }
 }
