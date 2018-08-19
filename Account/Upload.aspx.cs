@@ -79,4 +79,18 @@ public partial class Account_Manage : System.Web.UI.Page
             ModelState.AddModelError("", error);
         }
     }
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Label7.Visible = true;
+        Label8.Visible = true;
+        Label9.Visible = true;
+        Label10.Visible = true;
+    }
+
+    protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DropDownList1.Visible = true;
+        Label1.Visible = true;
+    }
 }

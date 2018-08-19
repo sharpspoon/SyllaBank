@@ -18,21 +18,23 @@
                 <asp:FileUpload ID="FileUpload1" runat="server" />
                 <asp:Panel ID="Panel2" runat="server">
                     <asp:Label ID="Label6" runat="server" Font-Size="Large" Text="State: "></asp:Label>
-                    <asp:DropDownList ID="DropDownList2" runat="server" Font-Size="Medium">
-                        <asp:ListItem Value="AL">AL</asp:ListItem>
-                        <asp:ListItem Value="GA">GA</asp:ListItem>
+                    <asp:DropDownList ID="DropDownList2" runat="server" Font-Size="Medium" AutoPostBack="True" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" DataSourceID="StateCode" DataTextField="stateCode" DataValueField="stateCode">
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="StateCode" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [stateCode] FROM [state] ORDER BY [stateCode]"></asp:SqlDataSource>
                 </asp:Panel>
                 <asp:Panel ID="Panel1" runat="server">
-                    <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="School: "></asp:Label>
-                    <asp:DropDownList ID="DropDownList1" runat="server" Font-Size="Medium">
-                        <asp:ListItem Value="AU"></asp:ListItem>
-                        <asp:ListItem Value="BAMA"></asp:ListItem>
+                    <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="School: " Visible="False"></asp:Label>
+                    <asp:DropDownList ID="DropDownList1" runat="server" Font-Size="Medium" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Visible="False" AutoPostBack="True" DataSourceID="SchoolName" DataTextField="Institution_Name" DataValueField="Institution_Name">
                     </asp:DropDownList>
+                    <asp:SqlDataSource ID="SchoolName" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Institution_Name] FROM [school] WHERE ([Institution_State] = @Institution_State) ORDER BY [Institution_Name]">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="DropDownList2" Name="Institution_State" PropertyName="SelectedValue" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                 </asp:Panel>
                 <asp:Panel ID="Panel3" runat="server">
-                    <asp:Label ID="Label7" runat="server" Font-Size="Large" Text="Course: "></asp:Label>
-                    <asp:DropDownList ID="DropDownList3" runat="server" Font-Size="Medium">
+                    <asp:Label ID="Label7" runat="server" Font-Size="Large" Text="Course: " Visible="False"></asp:Label>
+                    <asp:DropDownList ID="DropDownList3" runat="server" Font-Size="Medium" Visible="False">
                         <asp:ListItem Value="COMP">COMP</asp:ListItem>
                         <asp:ListItem Value="BIO">BIO</asp:ListItem>
                     </asp:DropDownList>
@@ -43,26 +45,26 @@
                 </asp:Panel>
                 <asp:Panel ID="Panel4" runat="server">
                     <asp:Panel ID="Panel6" runat="server">
-                        <asp:Label ID="Label10" runat="server" Font-Size="Large" Text="Professor: "></asp:Label>
+                        <asp:Label ID="Label10" runat="server" Font-Size="Large" Text="Professor: " Visible="False"></asp:Label>
                         <asp:DropDownList ID="DropDownList7" runat="server" Font-Size="Medium">
                             <asp:ListItem Value="Dr. Manhatthan">Dr. Manhatthan</asp:ListItem>
                             <asp:ListItem Value="Mr. Man">Mr. Man</asp:ListItem>
                         </asp:DropDownList>
                     </asp:Panel>
-                    <asp:Label ID="Label8" runat="server" Font-Size="Large" Text="Year: "></asp:Label>
+                    <asp:Label ID="Label8" runat="server" Font-Size="Large" Text="Year: " Visible="False"></asp:Label>
                     <asp:DropDownList ID="DropDownList5" runat="server" Font-Size="Medium">
                         <asp:ListItem Value="2008">2008</asp:ListItem>
                         <asp:ListItem Value="2009">2009</asp:ListItem>
                     </asp:DropDownList>
                 </asp:Panel>
                 <asp:Panel ID="Panel5" runat="server">
-                    <asp:Label ID="Label9" runat="server" Font-Size="Large" Text="Semester: "></asp:Label>
+                    <asp:Label ID="Label9" runat="server" Font-Size="Large" Text="Semester: " Visible="False"></asp:Label>
                     <asp:DropDownList ID="DropDownList6" runat="server" Font-Size="Medium">
                         <asp:ListItem Value="Spring">Spring</asp:ListItem>
                         <asp:ListItem Value="Fall">Fall</asp:ListItem>
                     </asp:DropDownList>
                 </asp:Panel>
-                <asp:Button ID="Button1" runat="server" Font-Size="Medium" Text="Submit" />
+                <asp:Button ID="Button1" runat="server" Font-Size="Medium" Text="Submit" Visible="False" />
                 <br />
 
             </section>
