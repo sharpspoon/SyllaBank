@@ -63,7 +63,9 @@
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Search" title="Search for a syllabus">Search</a></li>
+                                <li><a runat="server" href="~/Account/AddFaculty" title="Add a Professor">Add a Professor</a></li>
+                                <li><a runat="server" href="~/Account/AddCourse" title="Add a Course">Add a Course</a></li>
+                                <li><a runat="server" href="~/Account/Search" title="Search for a Syllabus">Search</a></li>
                                 <li><a runat="server" href="~/Account/Upload" title="Upload a syllabus">Upload</a></li>
                                 <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
                                 <li>

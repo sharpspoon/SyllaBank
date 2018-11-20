@@ -2,13 +2,16 @@
 CREATE TABLE [dbo].[faculty]
 (
 	facultyID INT PRIMARY KEY IDENTITY(1,1) NOT NULL, 
-    name VARCHAR(50) NOT NULL, 
+	prefix VARCHAR(50) NULL, 
+    firstName VARCHAR(50) NOT NULL, 
+	lastName VARCHAR(50) NOT NULL, 
+	gender VARCHAR(50) NOT NULL,
     schoolID int FOREIGN KEY  REFERENCES [school]([schoolID]) NOT NULL,
 	userId nvarchar(128) FOREIGN KEY  REFERENCES [AspNetUsers]([Id]) NOT NULL,
 	insDate datetime DEFAULT(GETDATE()),
 )
 alter table faculty
-add constraint UQ_name_SchoolID UNIQUE(name,schoolID);
+add constraint UQ_firstName_lastName_SchoolID UNIQUE(firstName,lastName,schoolID);
 
 drop table course
 CREATE TABLE [dbo].[course]
