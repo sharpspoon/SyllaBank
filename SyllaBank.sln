@@ -24,13 +24,24 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SyllaBank", ".", "{B28BDB33
 		SlnRelativePath = "..\SyllaBank\"
 	EndProjectSection
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "syllabankDatabase", "syllabankDatabase\syllabankDatabase.sqlproj", "{C32322A4-7783-40D3-AC7E-769802C7BF2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B28BDB33-C042-4A2A-A614-9B1E706BC21B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B28BDB33-C042-4A2A-A614-9B1E706BC21B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B28BDB33-C042-4A2A-A614-9B1E706BC21B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B28BDB33-C042-4A2A-A614-9B1E706BC21B}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{C32322A4-7783-40D3-AC7E-769802C7BF2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C32322A4-7783-40D3-AC7E-769802C7BF2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C32322A4-7783-40D3-AC7E-769802C7BF2C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C32322A4-7783-40D3-AC7E-769802C7BF2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C32322A4-7783-40D3-AC7E-769802C7BF2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C32322A4-7783-40D3-AC7E-769802C7BF2C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

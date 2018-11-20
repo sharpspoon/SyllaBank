@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SyllaBank1;
+using System.Data.SqlClient;
+using System.Data;
 
 public partial class Account_Manage : System.Web.UI.Page
 {
@@ -87,7 +89,7 @@ public partial class Account_Manage : System.Web.UI.Page
 
     protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
     {
-        DropDownList1.Visible = true;
+        schoolDropDownList.Visible = true;
         DropDownList5.Visible = true;
         DropDownList6.Visible = true;
         Label1.Visible = true;
@@ -96,7 +98,7 @@ public partial class Account_Manage : System.Web.UI.Page
         Label9.Visible = true;
         Label10.Visible = true;
         TextBox1.Visible = true;
-        TextBox2.Visible = true;
+        facultyTextBox.Visible = true;
         Button1.Visible = true;
     }
 
@@ -110,13 +112,56 @@ public partial class Account_Manage : System.Web.UI.Page
         {
             Label11.Visible = false;
         }
-        if (TextBox2.Text == "")
+        if (facultyTextBox.Text == "")
         {
             Label12.Visible = true;
         }
-        if (TextBox2.Text != "")
+        if (facultyTextBox.Text != "")
         {
             Label12.Visible = false;
+        }
+
+        using (SqlConnection connection = new SqlConnection("Server=tcp:syllabank.database.windows.net,1433;Initial Catalog=sylladb;Persist Security Info=False;User ID=syllasa;Password=Crackp4d1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+        {
+            
+            connection.Open();
+
+            //get userid
+            var userDataSet = new DataSet();
+            var userSelect = new SqlCommand("select id from aspnetusers where username=" + "'" + Context.User.Identity.GetUserName() + "'", connection)
+            {
+                CommandType = CommandType.Text
+            };
+            var userDataAdapter = new SqlDataAdapter { SelectCommand = userSelect };
+            userDataAdapter.Fill(userDataSet);
+            var resultuser = userDataSet.Tables[0].Rows[0]["id"].ToString();
+
+            //get schoolid
+            var schoolDataSet = new DataSet();
+            var schoolSelect = new SqlCommand("select schoolID from school where Institution_Name=" + "'" + schoolDropDownList.Text + "'", connection)
+            {
+                CommandType = CommandType.Text
+            };
+            var schoolDataAdapter = new SqlDataAdapter { SelectCommand = schoolSelect };
+            schoolDataAdapter.Fill(schoolDataSet);
+            var resultschool = schoolDataSet.Tables[0].Rows[0]["schoolID"].ToString();
+            
+
+
+            String query = "INSERT INTO dbo.faculty (name,schoolID, userID) VALUES (@name, @schoolID, @userID)";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@name", facultyTextBox.Text);
+                command.Parameters.AddWithValue("@schoolID", resultschool);
+                command.Parameters.AddWithValue("@userID", resultuser);
+
+                //connection.Open();
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result < 0)
+                    Console.WriteLine("Error inserting data into Database!");
+            }
         }
     }
 }

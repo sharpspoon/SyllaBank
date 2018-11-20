@@ -24,7 +24,7 @@
                 </asp:Panel>
                 <asp:Panel ID="Panel1" runat="server">
                     <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="School: " Visible="False"></asp:Label>
-                    <asp:DropDownList ID="DropDownList1" runat="server" Font-Size="Medium" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Visible="False" DataSourceID="SchoolName" DataTextField="Institution_Name" DataValueField="Institution_Name">
+                    <asp:DropDownList ID="schoolDropDownList" runat="server" Font-Size="Medium" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Visible="False" DataSourceID="SchoolName" DataTextField="Institution_Name" DataValueField="Institution_Name">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SchoolName" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Institution_Name] FROM [school] WHERE ([Institution_State] = @Institution_State) ORDER BY [Institution_Name]">
                         <SelectParameters>
@@ -40,7 +40,7 @@
                 <asp:Panel ID="Panel4" runat="server">
                     <asp:Panel ID="Panel6" runat="server">
                         <asp:Label ID="Label10" runat="server" Font-Size="Large" Text="Professor: " Visible="False"></asp:Label>
-                        <asp:TextBox ID="TextBox2" runat="server" Visible="False"></asp:TextBox>
+                        <asp:TextBox ID="facultyTextBox" runat="server" Visible="False"></asp:TextBox>
                         <asp:Label ID="Label12" runat="server" ForeColor="Red" Text="Cannot be empty!" Visible="False"></asp:Label>
                     </asp:Panel>
                     <asp:Label ID="Label8" runat="server" Font-Size="Large" Text="Year: " Visible="False"></asp:Label>
@@ -59,6 +59,7 @@
                     </asp:DropDownList>
                 </asp:Panel>
                 <asp:Button ID="Button1" runat="server" Font-Size="Medium" Text="Submit" OnClick="Button1_Click" Visible="False" />
+                <asp:Label ID="Label13" runat="server" Text="Label"></asp:Label>
                 <br />
 
             </section>
