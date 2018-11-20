@@ -29,6 +29,7 @@ public partial class Account_Manage : System.Web.UI.Page
     protected void Page_Load()
     {
 
+
         if (!IsPostBack)
         {
             // Determine the sections to render
@@ -148,8 +149,8 @@ public partial class Account_Manage : System.Web.UI.Page
             
 
 
-            String query = "INSERT INTO dbo.faculty (name,schoolID, userID) VALUES (@name, @schoolID, @userID)";
-            using (SqlCommand command = new SqlCommand(query, connection))
+            String facultyQuery = "INSERT INTO dbo.faculty (name,schoolID, userID) VALUES (@name, @schoolID, @userID)";
+            using (SqlCommand command = new SqlCommand(facultyQuery, connection))
             {
                 command.Parameters.AddWithValue("@name", facultyTextBox.Text);
                 command.Parameters.AddWithValue("@schoolID", resultschool);

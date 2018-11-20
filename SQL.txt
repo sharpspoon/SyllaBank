@@ -1,0 +1,23 @@
+﻿drop table faculty
+CREATE TABLE [dbo].[faculty]
+(
+	facultyID INT PRIMARY KEY IDENTITY(1,1) NOT NULL, 
+    name VARCHAR(50) NOT NULL, 
+    schoolID int FOREIGN KEY  REFERENCES [school]([schoolID]) NOT NULL,
+	userId nvarchar(128) FOREIGN KEY  REFERENCES [AspNetUsers]([Id]) NOT NULL,
+	insDate datetime DEFAULT(GETDATE()),
+)
+alter table faculty
+add constraint UQ_name_SchoolID UNIQUE(name,schoolID);
+
+drop table course
+CREATE TABLE [dbo].[course]
+(
+	courseID INT PRIMARY KEY IDENTITY(1,1) NOT NULL, 
+    name VARCHAR(50) NOT NULL, 
+    facultyID int FOREIGN KEY  REFERENCES [faculty]([facultyID]) NOT NULL,
+	userId nvarchar(128) FOREIGN KEY  REFERENCES [AspNetUsers]([Id]) NOT NULL,
+	insDate datetime DEFAULT(GETDATE()),
+)
+alter table course
+add constraint UQ_name_courseID UNIQUE(name,facultyID);

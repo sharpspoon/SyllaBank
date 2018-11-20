@@ -59,7 +59,6 @@
                     </asp:DropDownList>
                 </asp:Panel>
                 <asp:Button ID="Button1" runat="server" Font-Size="Medium" Text="Submit" OnClick="Button1_Click" Visible="False" />
-                <asp:Label ID="Label13" runat="server" Text="Label"></asp:Label>
                 <br />
 
             </section>
