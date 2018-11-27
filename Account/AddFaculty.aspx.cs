@@ -128,21 +128,30 @@ public partial class Account_Manage : System.Web.UI.Page
 
 
             String facultyQuery = "INSERT INTO dbo.faculty (prefix, firstName, lastName, gender, schoolID, userID) VALUES (@prefix, @firstName, @lastName, @gender, @schoolID, @userID)";
-            using (SqlCommand command = new SqlCommand(facultyQuery, connection))
+            try
             {
-                command.Parameters.AddWithValue("@prefix", prefixDropDownList.Text);
-                command.Parameters.AddWithValue("@firstName", facultyFirstNameTextBox.Text);
-                command.Parameters.AddWithValue("@lastName", facultyLastNameTextBox.Text);
-                command.Parameters.AddWithValue("@gender", genderDropDownList.Text);
-                command.Parameters.AddWithValue("@schoolID", resultschool);
-                command.Parameters.AddWithValue("@userID", resultuser);
+                using (SqlCommand command = new SqlCommand(facultyQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@prefix", prefixDropDownList.Text);
+                    command.Parameters.AddWithValue("@firstName", facultyFirstNameTextBox.Text);
+                    command.Parameters.AddWithValue("@lastName", facultyLastNameTextBox.Text);
+                    command.Parameters.AddWithValue("@gender", genderDropDownList.Text);
+                    command.Parameters.AddWithValue("@schoolID", resultschool);
+                    command.Parameters.AddWithValue("@userID", resultuser);
 
-                //connection.Open();
-                int result = command.ExecuteNonQuery();
-
-                // Check Error
-                if (result < 0)
-                    Console.WriteLine("Error inserting data into Database!");
+                    //connection.Open();
+                    int result = command.ExecuteNonQuery();
+                    Label18.Visible = false;
+                    Label17.Visible = true;
+                    // Check Error
+                    if (result < 0)
+                        Console.WriteLine("Error inserting data into Database!");
+                }
+            }
+            catch
+            {
+                Label17.Visible = false;
+                Label18.Visible = true;
             }
         }
     }

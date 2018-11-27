@@ -31,6 +31,7 @@
                     <br />
                     <asp:Label ID="Label13" runat="server" Font-Size="Large" Text="Last Name:"></asp:Label>
                     <asp:TextBox ID="facultyLastNameTextBox" runat="server"></asp:TextBox>
+                    <asp:Label ID="Label16" runat="server" ForeColor="Red" Text="Cannot be empty!" Visible="False"></asp:Label>
                     <br />
                     <asp:Label ID="Label14" runat="server" Font-Size="Large" Text="Gender:"></asp:Label>
                     <asp:DropDownList ID="genderDropDownList" runat="server" Font-Size="Medium">
@@ -54,6 +55,8 @@
                     </asp:SqlDataSource>
                 </asp:Panel>
                 <asp:Button ID="Button1" runat="server" Font-Size="Medium" Text="Submit" OnClick="Button1_Click" Visible="False" />
+                    <asp:Label ID="Label17" runat="server" ForeColor="#33CC33" Text="Success!" Visible="False"></asp:Label>
+                    <asp:Label ID="Label18" runat="server" ForeColor="Red" Text="Dupe record!" Visible="False"></asp:Label>
                 <br />
 
             </section>
